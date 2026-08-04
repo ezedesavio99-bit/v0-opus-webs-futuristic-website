@@ -3,6 +3,7 @@ import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { MarqueeSection } from "@/components/marquee-section"
 import { ServicesSection } from "@/components/services-section"
+import { FoodSystemSection } from "@/components/foodsystem-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 
@@ -14,6 +15,7 @@ export default function HomePage() {
       <HeroSection />
       <MarqueeSection />
       <ServicesSection />
+      <FoodSystemSection />
       <ContactSection />
       <Footer />
     </main>
