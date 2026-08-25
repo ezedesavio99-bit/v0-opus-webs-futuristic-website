@@ -2,12 +2,6 @@
 
 import { FoodSystemHero } from "./foodsystem/foodsystem-hero"
 import { FoodSystemProblem } from "./foodsystem/foodsystem-problem"
-import { FoodSystemFeatures } from "./foodsystem/foodsystem-features"
-import { FoodSystemVideo } from "./foodsystem/foodsystem-video"
-import { FoodSystemBenefits } from "./foodsystem/foodsystem-benefits"
-import { FoodSystemComparison } from "./foodsystem/foodsystem-comparison"
-import { FoodSystemScalable } from "./foodsystem/foodsystem-scalable"
-import { FoodSystemCTA } from "./foodsystem/foodsystem-cta"
 
 /**
  * FoodSystem — flagship product showcase.
@@ -25,12 +19,6 @@ export function FoodSystemSection() {
 
       <FoodSystemHero />
       <FoodSystemProblem />
-      <FoodSystemFeatures />
-      <FoodSystemVideo />
-      <FoodSystemBenefits />
-      <FoodSystemComparison />
-      <FoodSystemScalable />
-      <FoodSystemCTA />
     </section>
   )
 }

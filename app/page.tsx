@@ -15,8 +15,8 @@ export default function HomePage() {
       <HeroSection />
       <MarqueeSection />
       <ServicesSection />
-      <FoodSystemSection />
       <ContactSection />
+      <FoodSystemSection />
       <Footer />
     </main>
   )

@@ -95,6 +95,13 @@ const projects = [
     tags: ["Ecommerce", "Conversión"],
     image: "/images/maraio.png",
   },
+  {
+    title: "Oratoria - El Arte de Conectar",
+    rubro: "Profesionales",
+    url: "https://www.oratoriaelartedeconectar.com/",
+    tags: ["Coaching", "Capacitaciones"],
+    image: "/images/oratoria.png",
+  },
 
   // Sitios en desarrollo (.vercel.app y otros)
   {
@@ -230,6 +237,63 @@ const projects = [
     url: "https://v0-nico-marmoles-website.vercel.app/",
     tags: ["Construcción", "Diseño"],
     image: "/images/nico-marmoles.png",
+  },
+
+  {
+    title: "Kosher Winery",
+    rubro: "Gastronomía",
+    url: "https://kosherr-winery.vercel.app/",
+    tags: ["Bodega", "Premium"],
+    image: "/images/kosher-winery.png",
+  },
+  {
+    title: "Ruth Delgado",
+    rubro: "Artistas",
+    url: "https://ruth-liart.vercel.app/",
+    tags: ["Artista", "Galería"],
+    image: "/images/ruth-delgado.png",
+  },
+  {
+    title: "Estás Para Más",
+    rubro: "Profesionales",
+    url: "https://estasparamass.vercel.app/",
+    tags: ["Evento", "Landing"],
+    image: "/images/estas-para-mas.png",
+  },
+  {
+    title: "ACI Synergy",
+    rubro: "Servicios",
+    url: "https://acisynergy.vercel.app/",
+    tags: ["Consultora", "Calidad"],
+    image: "/images/aci-synergy.png",
+  },
+  {
+    title: "Brunis Catering",
+    rubro: "Gastronomía",
+    url: "https://brunis-blond.vercel.app/",
+    tags: ["Catering", "Eventos"],
+    image: "/images/brunis-catering.png",
+  },
+  {
+    title: "Nahuel Coach",
+    rubro: "Fitness",
+    url: "https://nahuelcoach-ten.vercel.app/",
+    tags: ["Fitness", "Coaching"],
+    image: "/images/nahuel-coach.png",
+  },
+  {
+    title: "Tacchino Propiedades",
+    rubro: "Inmobiliaria",
+    url: "https://tacchino-propiedades.vercel.app/",
+    tags: ["Inmobiliaria", "Premium"],
+    image: "/images/tacchino-propiedades.png",
+  },
+  {
+    title: "Magui Sanchez Tattoo Studio",
+    rubro: "Artistas",
+    url: "https://v0-tattoo-studio-website-dusky.vercel.app/",
+    tags: ["Tatuajes", "Diseño"],
+    image: "/images/magui-sanchez-tattoo.png",
   },
 ]
 
