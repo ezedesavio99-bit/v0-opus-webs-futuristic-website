@@ -12,11 +12,6 @@ import { FoodSystemProblem } from "./foodsystem/foodsystem-problem"
 export function FoodSystemSection() {
   return (
     <section id="foodsystem" className="relative">
-      {/* Divider that separates FoodSystem from the rest of the page */}
-      <div className="container mx-auto px-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-[var(--glow-violet)]/30 to-transparent" />
-      </div>
-
       <FoodSystemHero />
       <FoodSystemProblem />
     </section>

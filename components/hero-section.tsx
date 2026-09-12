@@ -1,167 +1,125 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
+import Image from "next/image"
+import { Button } from "./ui-premium/button"
+import { Badge } from "./ui-premium/badge"
 import { MagneticButton } from "./magnetic-button"
-import { Zap, Smartphone, Search, TrendingUp } from "lucide-react"
+import { Smartphone, Search, Zap, TrendingUp } from "lucide-react"
 
-const heroText = "Creamos sitios web que no solo se ven bien, venden."
+const chips = [
+  { icon: Smartphone, label: "Mobile First" },
+  { icon: Search, label: "SEO Ready" },
+  { icon: Zap, label: "Ultra rápidas" },
+  { icon: TrendingUp, label: "Escalables" },
+]
+
+const mockups = [
+  { src: "/images/cordaro.png", label: "cordaroinmobiliaria.com" },
+  { src: "/images/grupo-ag.png", label: "somosgrupoag.com" },
+  { src: "/images/dellepiane.png", label: "dellepianeobrasdearte.com" },
+]
+
+function BrowserMockup({
+  src,
+  label,
+  className = "",
+}: {
+  src: string
+  label: string
+  className?: string
+}) {
+  return (
+    <div
+      className={`absolute w-[320px] sm:w-[380px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[var(--ink-2)] ${className}`}
+    >
+      <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/10">
+        <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+        <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+        <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+        <span className="ml-3 text-[11px] text-white/40 truncate">{label}</span>
+      </div>
+      <div className="relative aspect-[16/10]">
+        <Image src={src} alt={label} fill className="object-cover object-top" sizes="380px" />
+      </div>
+    </div>
+  )
+}
 
 export function HeroSection() {
-  const [displayText, setDisplayText] = useState("")
-  const [showCursor, setShowCursor] = useState(true)
-
-  useEffect(() => {
-    let index = 0
-    const interval = setInterval(() => {
-      if (index <= heroText.length) {
-        setDisplayText(heroText.slice(0, index))
-        index++
-      } else {
-        clearInterval(interval)
-      }
-    }, 50)
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setShowCursor((prev) => !prev)
-    }, 500)
-    return () => clearInterval(cursorInterval)
-  }, [])
-
-  const chips = [
-    { icon: Smartphone, label: "Mobile First" },
-    { icon: Search, label: "SEO Ready" },
-    { icon: Zap, label: "Ultra Rápidas" },
-    { icon: TrendingUp, label: "Escalables" },
-  ]
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      {/* Energy ring behind content */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-[var(--glow-blue)]/20 animate-glow-pulse" />
+    <section
+      className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden"
+      style={{ background: "var(--ink)" }}
+    >
+      {/* Soft accent glow — static, not a particle field */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-[var(--glow-cyan)]/15 animate-glow-pulse"
-        style={{ animationDelay: "0.5s" }}
+        className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-[160px] opacity-[0.18]"
+        style={{ background: "var(--accent)" }}
       />
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-[var(--glow-violet)]/10 animate-glow-pulse"
-        style={{ animationDelay: "1s" }}
+        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-[0.1]"
+        style={{ background: "var(--accent)" }}
       />
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          <h1
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight"
-            style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
-          >
-            <span
-              style={{
-                background: "linear-gradient(90deg, #5fd3ff 0%, #2f9cff 40%, #7c5cff 80%, #5fd3ff 100%)",
-                backgroundSize: "200% 100%",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                animation: "gradient-shift 6s ease infinite",
-              }}
-            >
-              {displayText}
-            </span>
-            <span
-              className={showCursor ? "opacity-100" : "opacity-0"}
-              style={{ WebkitTextFillColor: "var(--glow-cyan)" }}
-            >
-              |
-            </span>
-          </h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.5, duration: 0.8 }}
-            className="text-lg md:text-xl text-[var(--text-muted)] mb-8 max-w-2xl mx-auto"
-          >
-            Diseño cyber premium, velocidad, SEO y una experiencia que se siente del futuro.
-          </motion.p>
-
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-3 mb-10"
+            transition={{ duration: 0.7 }}
           >
-            {chips.map((chip, index) => (
-              <div
-                key={chip.label}
-                className="flex items-center gap-2 px-4 py-2 rounded-full glass border border-[var(--glow-blue)]/30 text-sm text-white"
-              >
-                <chip.icon size={16} className="text-[var(--glow-cyan)]" />
-                {chip.label}
-              </div>
-            ))}
+            <Badge tone="dark" className="mb-6">
+              Websites · Software · Automatización
+            </Badge>
+
+            <h1 className="font-display font-extrabold text-white text-4xl sm:text-5xl lg:text-6xl leading-[1.08] mb-6 text-balance">
+              Sitios web que no solo se ven bien,{" "}
+              <span style={{ color: "var(--accent)" }}>venden.</span>
+            </h1>
+
+            <p className="text-lg text-[var(--text-on-dark-muted)] mb-8 max-w-lg leading-relaxed">
+              Diseño premium, performance real y una experiencia pensada para convertir visitas en clientes.
+            </p>
+
+            <div className="flex flex-wrap gap-2.5 mb-10">
+              {chips.map((chip) => (
+                <div
+                  key={chip.label}
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-full border border-white/10 text-sm text-white/70"
+                >
+                  <chip.icon size={15} style={{ color: "var(--accent)" }} />
+                  {chip.label}
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <MagneticButton>
+                <Button href="#contacto" size="lg">
+                  Quiero una web así
+                </Button>
+              </MagneticButton>
+              <MagneticButton>
+                <Button href="/portfolio" variant="ghost" size="lg">
+                  Ver ejemplos
+                </Button>
+              </MagneticButton>
+            </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.3, duration: 0.6 }}
-            className="flex flex-col sm:flex-row justify-center gap-4"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative hidden lg:block h-[440px]"
           >
-            <MagneticButton>
-              <a
-                href="#contacto"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-[var(--glow-blue)] to-[var(--glow-cyan)] text-[var(--deep-navy)] font-semibold text-lg hover:shadow-[0_0_40px_rgba(47,156,255,0.4)] transition-shadow animate-breathe"
-              >
-                Quiero una web así
-              </a>
-            </MagneticButton>
-            <MagneticButton>
-              <a
-                href="/portfolio"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full glass border border-[var(--glow-blue)]/30 text-white font-semibold text-lg hover:border-[var(--glow-cyan)]/50 transition-colors"
-              >
-                Ver ejemplos
-              </a>
-            </MagneticButton>
+            <BrowserMockup {...mockups[0]} className="left-0 top-8 z-10 rotate-[-4deg]" />
+            <BrowserMockup {...mockups[1]} className="left-32 top-32 z-20 rotate-[2deg]" />
+            <BrowserMockup {...mockups[2]} className="left-16 -top-4 z-0 rotate-[6deg] opacity-90" />
           </motion.div>
-
-          {/* Trust bar */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 3.8, duration: 0.8 }}
-            className="mt-16 flex flex-wrap justify-center gap-8 md:gap-16"
-          >
-            {[
-              { label: "Diseño", value: "Premium" },
-              { label: "Performance", value: "100%" },
-              { label: "Conversión", value: "Optimizada" },
-            ].map((item) => (
-              <div key={item.label} className="text-center">
-                <div className="text-2xl font-bold holographic-text">{item.value}</div>
-                <div className="text-sm text-[var(--text-muted)]">{item.label}</div>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 4, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        
-      </motion.div>
     </section>
   )
 }

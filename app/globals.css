@@ -4,36 +4,77 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* OpusWebs Cyber Premium Palette */
-  --background: #050b16;
-  --foreground: #ffffff;
-  --card: #0b1220;
-  --card-foreground: #ffffff;
-  --popover: #071a2f;
-  --popover-foreground: #ffffff;
-  --primary: #2f9cff;
-  --primary-foreground: #050b16;
-  --secondary: #071a2f;
-  --secondary-foreground: #ffffff;
-  --muted: #071a2f;
-  --muted-foreground: #b9c7d6;
-  --accent: #5fd3ff;
-  --accent-foreground: #050b16;
-  --destructive: #ff4444;
-  --destructive-foreground: #ffffff;
-  --border: rgba(47, 156, 255, 0.2);
-  --input: #0b1220;
-  --ring: #2f9cff;
-  --radius: 0.75rem;
+  /* ============================================================
+     OpusWebs — Premium Tech palette (light + dark, single accent)
+     ============================================================ */
 
-  /* Custom OpusWebs Colors */
-  --glow-blue: #2f9cff;
-  --glow-cyan: #5fd3ff;
-  --glow-violet: #7c5cff;
-  --deep-navy: #050b16;
-  --secondary-navy: #071a2f;
-  --card-dark: #0b1220;
-  --text-muted: #b9c7d6;
+  /* Neutrals */
+  --white: #ffffff;
+  --surface: #fafaf9; /* off-white section background */
+  --surface-alt: #f4f4f5; /* subtle alternating tint on light sections */
+  --ink: #0a0a0b; /* near-black, used for dark sections + primary text */
+  --ink-2: #151517; /* dark cards / dark section elevation */
+  --ink-3: #1f1f22; /* dark card hover elevation */
+
+  --gray-100: #f2f2f3;
+  --gray-200: #e6e6e8;
+  --gray-300: #d4d4d8;
+  --gray-400: #9b9ba3;
+  --gray-500: #71717a;
+  --gray-600: #5a5a63;
+  --gray-800: #2a2a2e;
+
+  /* Single accent, used sparingly */
+  --accent: #2f9cff;
+  --accent-hover: #1c86e8;
+  --accent-soft: rgba(47, 156, 255, 0.08);
+  --accent-soft-strong: rgba(47, 156, 255, 0.16);
+
+  /* Hairline borders */
+  --border-light: rgba(10, 10, 11, 0.08);
+  --border-light-strong: rgba(10, 10, 11, 0.14);
+  --border-dark: rgba(255, 255, 255, 0.1);
+  --border-dark-strong: rgba(255, 255, 255, 0.18);
+
+  /* Text on light / dark */
+  --text-primary: #0a0a0b;
+  --text-muted: #5a5a63;
+  --text-on-dark: #ffffff;
+  --text-on-dark-muted: #a3a3ac;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* ---- shadcn-style tokens kept for compatibility, repointed ---- */
+  --background: var(--surface);
+  --foreground: var(--text-primary);
+  --card: var(--white);
+  --card-foreground: var(--text-primary);
+  --popover: var(--white);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--accent);
+  --primary-foreground: var(--white);
+  --secondary: var(--gray-100);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--gray-100);
+  --muted-foreground: var(--text-muted);
+  --accent-foreground: var(--white);
+  --destructive: #e5484d;
+  --destructive-foreground: #ffffff;
+  --border: var(--border-light);
+  --input: var(--white);
+  --ring: var(--accent);
+  --radius: var(--radius-md);
+
+  /* Legacy aliases kept so nothing throws while every section is migrated */
+  --deep-navy: var(--ink);
+  --secondary-navy: var(--ink-2);
+  --card-dark: var(--ink-2);
+  --glow-blue: var(--accent);
+  --glow-cyan: var(--accent);
+  --glow-violet: var(--accent);
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -50,45 +91,9 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
-}
-
 @theme inline {
   --font-sans: "Inter", "Inter Fallback", system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", monospace;
-  --font-orbitron: var(--font-orbitron);
+  --font-display: "Plus Jakarta Sans", "Plus Jakarta Sans Fallback", var(--font-sans);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -113,10 +118,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 6px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -133,52 +138,34 @@
   }
   body {
     @apply bg-background text-foreground;
-    background: var(--deep-navy);
+    background: var(--surface);
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--deep-navy);
+    background: var(--surface);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--glow-blue);
+    background: var(--gray-300);
     border-radius: 4px;
   }
-}
-
-/* Glow animations */
-@keyframes glow-pulse {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-400);
   }
 }
 
+/* ============================================================
+   Motion — subtle, premium. Kept minimal on purpose.
+   ============================================================ */
 @keyframes float {
   0%,
   100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+    transform: translateY(-10px);
   }
 }
 
@@ -188,70 +175,60 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(1.02);
+    transform: scale(1.015);
   }
-}
-
-@keyframes light-sweep {
-  0% {
-    transform: translateX(-100%) rotate(45deg);
-  }
-  100% {
-    transform: translateX(200%) rotate(45deg);
-  }
-}
-
-.animate-glow-pulse {
-  animation: glow-pulse 3s ease-in-out infinite;
 }
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
-
 .animate-breathe {
   animation: breathe 4s ease-in-out infinite;
 }
 
-/* Glassmorphism */
+/* ============================================================
+   Surfaces
+   ============================================================ */
+
+/* Neutral frosted glass — used only on the floating navbar / overlays */
 .glass {
-  background: rgba(11, 18, 32, 0.7);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(47, 156, 255, 0.15);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
 }
 
-.glass-strong {
-  background: rgba(11, 18, 32, 0.85);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(47, 156, 255, 0.2);
+.glass-dark {
+  background: rgba(10, 10, 11, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-dark);
 }
 
-/* Holographic gradient text */
-.holographic-text {
-  background: linear-gradient(90deg, #2f9cff, #5fd3ff, #7c5cff, #2f9cff);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 6s ease infinite;
+/* Light card */
+.card-light {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 1px 2px rgba(10, 10, 11, 0.04);
 }
 
-/* Glow effects */
-.glow-blue {
-  box-shadow: 0 0 20px rgba(47, 156, 255, 0.3), 0 0 40px rgba(47, 156, 255, 0.1);
+/* Dark card, used sparingly for hierarchy */
+.card-dark {
+  background: var(--ink-2);
+  border: 1px solid var(--border-dark);
 }
 
-.glow-cyan {
-  box-shadow: 0 0 20px rgba(95, 211, 255, 0.3), 0 0 40px rgba(95, 211, 255, 0.1);
+.shadow-premium {
+  box-shadow: 0 12px 32px rgba(10, 10, 11, 0.06);
 }
 
-.text-glow {
-  text-shadow: 0 0 20px rgba(47, 156, 255, 0.5);
+.shadow-premium-hover {
+  box-shadow: 0 20px 48px rgba(10, 10, 11, 0.09);
+}
+
+.text-balance {
+  text-wrap: balance;
 }
 
 /* Reduced motion */

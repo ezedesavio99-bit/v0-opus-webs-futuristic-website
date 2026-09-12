@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import { Plus, Minus } from "lucide-react"
 import { MagneticButton } from "./magnetic-button"
-import Link from "next/link"
+import { Button } from "./ui-premium/button"
 
 const faqs = [
   {
@@ -60,92 +60,63 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section id="faq" ref={ref} className="relative py-24 md:py-32">
+    <section id="faq" ref={ref} className="relative py-24 md:py-32 bg-[var(--surface)]">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-            <span className="holographic-text">Preguntas frecuentes</span>
+          <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--accent)" }}>
+            FAQ
+          </span>
+          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-[var(--ink)] mt-4 mb-4">
+            Preguntas frecuentes
           </h2>
           <p className="text-[var(--text-muted)] text-lg max-w-2xl mx-auto">
             Resolvemos las dudas más comunes antes de dar el salto a una web profesional.
           </p>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-3xl mx-auto space-y-3">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index
             return (
               <motion.div
                 key={faq.question}
-                initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                animate={
-                  isInView
-                    ? {
-                        opacity: 1,
-                        y: 0,
-                        filter: "blur(0px)",
-                      }
-                    : {}
-                }
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className={`group relative glass rounded-2xl border transition-all duration-300 overflow-hidden ${
-                  isOpen
-                    ? "border-[var(--glow-blue)]/60 shadow-[0_0_30px_rgba(47,156,255,0.3)]"
-                    : "border-[var(--glow-blue)]/20 hover:border-[var(--glow-blue)]/40"
+                initial={{ opacity: 0, y: 16 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className={`rounded-2xl overflow-hidden transition-colors ${
+                  isOpen ? "card-light" : "bg-white border border-[var(--border-light)]"
                 }`}
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                </div>
-
                 <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="relative w-full p-6 flex items-center justify-between text-left"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full p-6 flex items-center justify-between text-left"
                 >
-                  <span className="text-white font-medium pr-4 text-lg">{faq.question}</span>
+                  <span className="text-[var(--ink)] font-medium pr-4 text-base md:text-lg">{faq.question}</span>
                   <div className="flex-shrink-0 w-6 h-6 relative">
-                    <motion.div
-                      initial={false}
-                      animate={{
-                        opacity: isOpen ? 0 : 1,
-                        rotate: isOpen ? 90 : 0,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute inset-0"
-                    >
-                      <Plus className="w-6 h-6 text-[var(--glow-cyan)]" />
-                    </motion.div>
-                    <motion.div
-                      initial={false}
-                      animate={{
-                        opacity: isOpen ? 1 : 0,
-                        rotate: isOpen ? 0 : -90,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute inset-0"
-                    >
-                      <Minus className="w-6 h-6 text-[var(--glow-cyan)]" />
-                    </motion.div>
+                    {isOpen ? (
+                      <Minus className="w-5 h-5" style={{ color: "var(--accent)" }} />
+                    ) : (
+                      <Plus className="w-5 h-5 text-[var(--gray-400)]" />
+                    )}
                   </div>
                 </button>
 
                 <motion.div
                   initial={false}
-                  animate={{
-                    height: isOpen ? "auto" : 0,
-                    opacity: isOpen ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                   className="overflow-hidden"
                 >
                   <div className="px-6 pb-6">
-                    <div className="h-px w-full bg-gradient-to-r from-transparent via-[var(--glow-blue)]/30 to-transparent mb-4" />
-                    <p className="text-[var(--text-muted)] leading-relaxed whitespace-pre-line">{faq.answer}</p>
+                    <div className="h-px w-full bg-[var(--border-light)] mb-4" />
+                    <p className="text-[var(--text-muted)] leading-relaxed whitespace-pre-line text-sm md:text-base">
+                      {faq.answer}
+                    </p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -154,20 +125,16 @@ export function FAQSection() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mt-16"
         >
           <p className="text-[var(--text-muted)] text-lg mb-6">¿Seguís con dudas? Hablemos y lo vemos juntos.</p>
           <MagneticButton>
-            <Link
-              href="/#contacto"
-              className="relative px-8 py-4 rounded-full bg-gradient-to-r from-[var(--glow-blue)] to-[var(--glow-cyan)] text-[var(--deep-navy)] font-semibold overflow-hidden group inline-block"
-            >
-              <span className="relative z-10">Quiero mi web profesional</span>
-              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
-            </Link>
+            <Button href="/#contacto" size="lg">
+              Quiero mi web profesional
+            </Button>
           </MagneticButton>
         </motion.div>
       </div>

@@ -8,23 +8,18 @@ export function StatementSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section ref={ref} className="relative py-32 md:py-40">
-      {/* Subtle glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[var(--glow-blue)]/5 blur-[100px] rounded-full" />
-
+    <section ref={ref} className="relative py-28 md:py-36 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           className="text-center max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight text-balance">
-            OpusWebs no sigue tendencias.
-            <br />
-            <span className="holographic-text">Diseña el estándar.</span>
+          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-6xl text-[var(--ink)] mb-6 leading-tight text-balance">
+            OpusWebs no sigue tendencias. <span style={{ color: "var(--accent)" }}>Diseña el estándar.</span>
           </h2>
-          <p className="text-xl text-[var(--text-muted)]">Webs que se sienten del futuro, hoy.</p>
+          <p className="text-xl text-[var(--text-muted)]">Webs pensadas para durar, no para pasar de moda.</p>
         </motion.div>
       </div>
     </section>

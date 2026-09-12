@@ -2,12 +2,17 @@
 
 import Link from "next/link"
 
-const footerLinks = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#planes", label: "Planes" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contacto", label: "Contacto" },
+const footerNav = [
+  { href: "/", label: "Inicio" },
+  { href: "/rubros", label: "Rubros" },
+  { href: "/proceso", label: "Proceso" },
+  { href: "/portfolio", label: "Portfolio" },
+]
+
+const footerLegal = [
+  { href: "/planes", label: "Planes" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/#contacto", label: "Contacto" },
 ]
 
 const socialLinks = [
@@ -17,8 +22,8 @@ const socialLinks = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -38,8 +43,8 @@ const socialLinks = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -55,53 +60,69 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative py-12 border-t border-[var(--glow-blue)]/20">
+    <footer className="relative pt-16 pb-8" style={{ background: "var(--ink)" }}>
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-bold text-lg text-white">
-              Opus<span className="text-[var(--glow-cyan)]">Webs</span>
-            </span>
-          </Link>
+        <div className="grid md:grid-cols-[1.5fr_1fr_1fr] gap-10 pb-12 border-b border-[var(--border-dark)]">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-2.5 mb-4">
+              <span className="font-display font-bold text-xl text-white">
+                Opus<span style={{ color: "var(--accent)" }}>Webs</span>
+              </span>
+            </Link>
+            <p className="text-sm text-[var(--text-on-dark-muted)] max-w-xs leading-relaxed">
+              Diseño y desarrollo de sitios web, tiendas online y software a medida para negocios que quieren
+              destacar.
+            </p>
+          </div>
 
-          {/* Links */}
-          <nav className="flex flex-wrap justify-center gap-6">
-            {footerLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[var(--text-muted)] hover:text-white transition-colors text-sm"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-4">Navegación</h3>
+            <nav className="flex flex-col gap-2.5">
+              {footerNav.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-[var(--text-on-dark-muted)] hover:text-white transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
-          <div className="flex items-center gap-4">
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-4">Empresa</h3>
+            <nav className="flex flex-col gap-2.5">
+              {footerLegal.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-[var(--text-on-dark-muted)] hover:text-white transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </div>
+
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-6 pt-8">
+          <p className="text-xs text-white/40">© {new Date().getFullYear()} OpusWebs. Todos los derechos reservados.</p>
+
+          <div className="flex items-center gap-3">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative p-2 rounded-full glass border border-[var(--glow-blue)]/20 hover:border-[var(--glow-cyan)]/50 transition-all duration-300"
+                className="p-2.5 rounded-full border border-white/10 text-white/60 hover:text-white hover:border-white/25 transition-colors"
                 aria-label={social.label}
               >
-                <div className="text-[var(--text-muted)] group-hover:text-[var(--glow-cyan)] transition-colors">
-                  {social.icon}
-                </div>
-                {/* Glow effect on hover */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[var(--glow-blue)] to-[var(--glow-cyan)] opacity-0 group-hover:opacity-20 blur-md transition-opacity" />
+                {social.icon}
               </a>
             ))}
           </div>
-        </div>
-
-        <div className="mt-8 pt-8 border-t border-[var(--glow-blue)]/10 text-center">
-          <p className="text-[var(--text-muted)]/60 text-xs">
-            © {new Date().getFullYear()} OpusWebs. Todos los derechos reservados.
-          </p>
         </div>
       </div>
     </footer>

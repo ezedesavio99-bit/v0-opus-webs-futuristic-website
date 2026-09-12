@@ -2,73 +2,56 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { ChevronLeft, ChevronRight, Star } from "lucide-react"
-import Image from "next/image"
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 
 const testimonials = [
   {
     name: "Distribuidora Maraio",
     role: "Ecommerce - Distribución mayorista",
     content:
-      "Desde que lanzamos la web con OpusWebs, las consultas de nuevos clientes mayoristas aumentaron un 280%. La plataforma es intuitiva y nuestros clientes pueden hacer pedidos las 24hs.",
-    rating: 5,
-    image: "/placeholder.svg?height=80&width=80",
+      "Desde que lanzamos la web con OpusWebs recibimos consultas de nuevos clientes mayoristas todas las semanas. La plataforma es intuitiva y nuestros clientes pueden hacer pedidos las 24hs.",
   },
   {
     name: "Don Gregorio Automotores",
     role: "Automotores - Concesionaria",
     content:
-      "La web que nos diseñaron transmite la confianza que buscábamos. Los clientes llegan más informados y las ventas cerraron un 40% más rápido desde que la tenemos.",
-    rating: 5,
-    image: "/placeholder.svg?height=80&width=80",
+      "La web que nos diseñaron transmite la confianza que buscábamos. Los clientes llegan mucho más informados y las ventas se cierran más rápido desde que la tenemos.",
   },
   {
     name: "Dra. Nathercia Lima",
     role: "Profesional - Medicina Estética",
     content:
-      "Mi web refleja exactamente el nivel de profesionalismo y exclusividad que mis pacientes esperan. Las consultas de tratamientos premium se triplicaron.",
-    rating: 5,
-    image: "/placeholder.svg?height=80&width=80",
+      "Mi web refleja exactamente el nivel de profesionalismo y exclusividad que mis pacientes esperan. Las consultas por tratamientos premium aumentaron notablemente.",
   },
   {
     name: "Cordaro Inmobiliaria",
     role: "Inmobiliaria - Propiedades premium",
     content:
-      "Nuestras propiedades ahora se presentan como merecen. Los compradores nos contactan ya interesados en cerrar. La inversión se pagó sola en el primer mes.",
-    rating: 5,
-    image: "/placeholder.svg?height=80&width=80",
+      "Nuestras propiedades ahora se presentan como merecen. Los compradores nos contactan ya interesados, con la decisión mucho más avanzada.",
   },
   {
     name: "Mansion Gym",
     role: "Fitness - Gimnasio",
     content:
-      "La web captura la energía de nuestro gimnasio. Las inscripciones online aumentaron un 150% y los clientes llegan motivados antes de cruzar la puerta.",
-    rating: 5,
-    image: "/placeholder.svg?height=80&width=80",
+      "La web captura la energía de nuestro gimnasio. Las inscripciones online se simplificaron y los clientes llegan motivados antes de cruzar la puerta.",
   },
   {
     name: "Matías Ricardes",
     role: "Artista - Portfolio creativo",
     content:
-      "Por fin tengo un espacio digital que representa mi arte. Las galerías y coleccionistas me toman más en serio y las comisiones de obra se duplicaron.",
-    rating: 5,
-    image: "/placeholder.svg?height=80&width=80",
+      "Por fin tengo un espacio digital que representa mi arte. Las galerías y coleccionistas me toman más en serio desde que lo tengo.",
   },
   {
     name: "Nautiky Road",
     role: "Náutica - Embarcaciones",
     content:
-      "El sitio transmite la exclusividad que nuestros clientes buscan. Las consultas por embarcaciones de alta gama aumentaron significativamente.",
-    rating: 5,
-    image: "/placeholder.svg?height=80&width=80",
+      "El sitio transmite la exclusividad que nuestros clientes buscan. Las consultas por embarcaciones de alta gama aumentaron de forma notoria.",
   },
   {
     name: "Nico Mármoles",
     role: "Construcción - Mármoles y piedras",
     content:
-      "Nuestra web ahora muestra nuestros trabajos como merecen. Los arquitectos y diseñadores nos contactan directamente para proyectos de alto nivel.",
-    rating: 5,
-    image: "/placeholder.svg?height=80&width=80",
+      "Nuestra web ahora muestra nuestros trabajos como merecen. Arquitectos y diseñadores nos contactan directamente para proyectos de alto nivel.",
   },
 ]
 
@@ -81,86 +64,73 @@ export function TestimonialsSection() {
   const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1))
 
   return (
-    <section ref={ref} className="relative py-24 md:py-32">
+    <section ref={ref} className="relative py-24 md:py-32 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-            Opiniones reales.
-            <br />
-            <span className="holographic-text">Resultados reales.</span>
+          <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--accent)" }}>
+            Testimonios
+          </span>
+          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-[var(--ink)] mt-4">
+            Lo que dicen quienes trabajaron con nosotros.
           </h2>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
           className="max-w-3xl mx-auto"
         >
-          <div className="relative glass rounded-3xl p-8 md:p-12 border border-[var(--glow-blue)]/20">
-            {/* Glow effect */}
-            <div className="absolute -inset-px rounded-3xl bg-gradient-to-br from-[var(--glow-blue)]/20 via-transparent to-[var(--glow-cyan)]/20 -z-10" />
+          <div className="relative rounded-2xl p-8 md:p-12 card-light">
+            <Quote className="w-10 h-10 mb-6" style={{ color: "var(--accent)" }} />
 
-            <div className="flex justify-center mb-6">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--glow-cyan)]/50">
-                <Image
-                  src={testimonials[current].image || "/placeholder.svg"}
-                  alt={testimonials[current].name}
-                  fill
-                  className="object-cover"
-                />
+            <p className="text-xl md:text-2xl text-[var(--ink)] mb-8 leading-relaxed">
+              {testimonials[current].content}
+            </p>
+
+            <div>
+              <div className="font-display font-semibold text-[var(--ink)] text-lg">{testimonials[current].name}</div>
+              <div className="text-sm" style={{ color: "var(--accent)" }}>
+                {testimonials[current].role}
               </div>
             </div>
 
-            <div className="flex justify-center gap-1 mb-6">
-              {[...Array(testimonials[current].rating)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-[var(--glow-cyan)] text-[var(--glow-cyan)]" />
-              ))}
-            </div>
+            <div className="flex justify-between items-center mt-10 pt-6 border-t border-[var(--border-light)]">
+              <div className="flex gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrent(index)}
+                    aria-label={`Ver testimonio ${index + 1}`}
+                    className={`h-1.5 rounded-full transition-all ${
+                      index === current ? "w-6" : "w-1.5 bg-[var(--gray-200)]"
+                    }`}
+                    style={index === current ? { background: "var(--accent)" } : undefined}
+                  />
+                ))}
+              </div>
 
-            <p className="text-xl md:text-2xl text-white text-center mb-8 leading-relaxed">
-              &ldquo;{testimonials[current].content}&rdquo;
-            </p>
-
-            <div className="text-center">
-              <div className="font-semibold text-white text-lg">{testimonials[current].name}</div>
-              <div className="text-[var(--glow-cyan)] text-sm">{testimonials[current].role}</div>
-            </div>
-
-            {/* Navigation */}
-            <div className="flex justify-center gap-4 mt-8">
-              <button
-                onClick={prev}
-                className="w-12 h-12 rounded-full glass border border-[var(--glow-blue)]/30 flex items-center justify-center text-white hover:border-[var(--glow-cyan)]/50 hover:bg-[var(--glow-blue)]/10 transition-all"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={next}
-                className="w-12 h-12 rounded-full glass border border-[var(--glow-blue)]/30 flex items-center justify-center text-white hover:border-[var(--glow-cyan)]/50 hover:bg-[var(--glow-blue)]/10 transition-all"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Dots */}
-            <div className="flex justify-center gap-2 mt-6">
-              {testimonials.map((_, index) => (
+              <div className="flex gap-2">
                 <button
-                  key={index}
-                  onClick={() => setCurrent(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === current
-                      ? "bg-[var(--glow-cyan)] w-6"
-                      : "bg-[var(--glow-blue)]/30 hover:bg-[var(--glow-blue)]/50"
-                  }`}
-                />
-              ))}
+                  onClick={prev}
+                  aria-label="Testimonio anterior"
+                  className="w-10 h-10 rounded-full border border-[var(--border-light-strong)] flex items-center justify-center text-[var(--ink)] hover:border-[var(--accent)]/40 hover:bg-[var(--accent-soft)] transition-all"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={next}
+                  aria-label="Siguiente testimonio"
+                  className="w-10 h-10 rounded-full border border-[var(--border-light-strong)] flex items-center justify-center text-[var(--ink)] hover:border-[var(--accent)]/40 hover:bg-[var(--accent-soft)] transition-all"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
         </motion.div>

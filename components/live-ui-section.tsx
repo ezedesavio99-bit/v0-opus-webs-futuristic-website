@@ -1,115 +1,80 @@
 "use client"
 
 import { motion, useInView } from "framer-motion"
-import { useRef, useState, useEffect } from "react"
+import { useRef } from "react"
 import { MagneticButton } from "./magnetic-button"
+import { Button } from "./ui-premium/button"
 
 export function LiveUISection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    if (!isInView) return
-    const interval = setInterval(() => {
-      setCount((prev) => (prev < 1847 ? prev + 23 : 1847))
-    }, 30)
-    return () => clearInterval(interval)
-  }, [isInView])
 
   return (
-    <section ref={ref} className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] rounded-full bg-[var(--glow-blue)]/10 blur-[100px]" />
-
+    <section ref={ref} className="relative py-24 md:py-32 overflow-hidden bg-white">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
-              TU sitio debería generar
-              <br />
-              <span className="holographic-text">AUTORIDAD...</span>
+            <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-[var(--ink)] mb-6 leading-[1.1]">
+              Tu sitio debería generar <span style={{ color: "var(--accent)" }}>autoridad.</span>
             </h2>
             <p className="text-lg text-[var(--text-muted)] mb-8">
-              Creamos experiencias con microinteracciones: el usuario explora, se queda y recuerda. Cada elemento tiene
-              un propósito.
+              Creamos experiencias con microinteracciones: el usuario explora, se queda y recuerda. Cada elemento
+              tiene un propósito.
             </p>
             <MagneticButton>
-              <a
-                href="#contacto"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-[var(--glow-blue)] to-[var(--glow-cyan)] text-[var(--deep-navy)] font-semibold hover:shadow-[0_0_40px_rgba(47,156,255,0.4)] transition-shadow"
-              >
+              <Button href="#contacto" size="lg">
                 Quiero este nivel
-              </a>
+              </Button>
             </MagneticButton>
           </motion.div>
 
-          {/* Live UI Showcase */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
             className="relative"
           >
-            <div className="relative glass rounded-3xl p-6 border border-[var(--glow-blue)]/30 overflow-hidden">
-              {/* Animated border */}
-              <div className="absolute inset-0 rounded-3xl">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Number.POSITIVE_INFINITY, duration: 8, ease: "linear" }}
-                  className="absolute inset-[-2px] rounded-3xl"
-                  style={{
-                    background:
-                      "conic-gradient(from 0deg, transparent, var(--glow-blue), var(--glow-cyan), transparent)",
-                    mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                    maskComposite: "xor",
-                    padding: "2px",
-                  }}
-                />
-              </div>
-
-              {/* Mock navbar */}
-              <div className="relative flex items-center justify-between mb-6 pb-4 border-b border-[var(--glow-blue)]/20">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--glow-blue)] to-[var(--glow-cyan)]" />
+            <div className="rounded-2xl p-6 card-light">
+              <div className="flex items-center justify-between mb-6 pb-4 border-b border-[var(--border-light)]">
+                <div className="w-8 h-8 rounded-lg" style={{ background: "var(--accent)" }} />
                 <div className="flex gap-4">
                   {[1, 2, 3].map((i) => (
-                    <motion.div
-                      key={i}
-                      animate={{ opacity: [0.5, 1, 0.5] }}
-                      transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2, delay: i * 0.3 }}
-                      className="w-12 h-2 rounded-full bg-[var(--text-muted)]/30"
-                    />
+                    <div key={i} className="w-12 h-2 rounded-full bg-[var(--gray-200)]" />
                   ))}
                 </div>
               </div>
 
-              {/* Mock cards */}
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[1, 2].map((i) => (
                   <motion.div
                     key={i}
-                    animate={{ y: [0, -5, 0] }}
+                    animate={{ y: [0, -4, 0] }}
                     transition={{ repeat: Number.POSITIVE_INFINITY, duration: 3, delay: i * 0.5 }}
-                    className="p-4 rounded-xl bg-[var(--secondary-navy)] border border-[var(--glow-blue)]/20"
+                    className="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border-light)]"
                   >
-                    <div className="w-full h-20 rounded-lg bg-gradient-to-br from-[var(--glow-blue)]/20 to-[var(--glow-cyan)]/20 mb-3" />
-                    <div className="w-3/4 h-2 rounded-full bg-[var(--text-muted)]/30 mb-2" />
-                    <div className="w-1/2 h-2 rounded-full bg-[var(--text-muted)]/20" />
+                    <div className="w-full h-20 rounded-lg mb-3" style={{ background: "var(--accent-soft)" }} />
+                    <div className="w-3/4 h-2 rounded-full bg-[var(--gray-200)] mb-2" />
+                    <div className="w-1/2 h-2 rounded-full bg-[var(--gray-100)]" />
                   </motion.div>
                 ))}
               </div>
 
-              {/* Counter */}
-              <div className="flex items-center justify-between p-4 rounded-xl bg-[var(--secondary-navy)] border border-[var(--glow-blue)]/20">
-                <div>
-                  <div className="text-sm text-[var(--text-muted)]">Visitantes</div>
-                  <div className="text-2xl font-bold text-white">{count.toLocaleString()}</div>
+              <div className="flex items-center justify-between p-4 rounded-xl bg-[var(--surface)] border border-[var(--border-light)]">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span
+                      className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
+                      style={{ background: "var(--accent)" }}
+                    />
+                    <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "var(--accent)" }} />
+                  </span>
+                  <span className="text-sm text-[var(--text-muted)]">Experiencia en vivo</span>
                 </div>
-                <div className="w-16 h-8 rounded-lg bg-gradient-to-r from-[var(--glow-blue)] to-[var(--glow-cyan)] animate-breathe" />
+                <div className="w-16 h-8 rounded-lg" style={{ background: "var(--accent)" }} />
               </div>
             </div>
           </motion.div>

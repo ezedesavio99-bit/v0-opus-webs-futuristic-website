@@ -1,4 +1,4 @@
-import { CyberBackground } from "@/components/cyber-background"
+import { PremiumBackground } from "@/components/premium-background"
 import { Header } from "@/components/header"
 import { FAQSection } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
@@ -11,7 +11,7 @@ export const metadata = {
 export default function FAQPage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
-      <CyberBackground />
+      <PremiumBackground />
       <Header />
       <div className="pt-32">
         <FAQSection />
