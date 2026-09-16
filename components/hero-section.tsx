@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "./ui-premium/button"
 import { Badge } from "./ui-premium/badge"
 import { MagneticButton } from "./magnetic-button"
+import { DarkShaderBackground } from "./dark-shader-background"
 import { Smartphone, Search, Zap, TrendingUp } from "lucide-react"
 
 const chips = [
@@ -52,15 +53,7 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden"
       style={{ background: "var(--ink)" }}
     >
-      {/* Soft accent glow — static, not a particle field */}
-      <div
-        className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-[160px] opacity-[0.18]"
-        style={{ background: "var(--accent)" }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-[0.1]"
-        style={{ background: "var(--accent)" }}
-      />
+      <DarkShaderBackground scrimOpacity={0.62} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { DarkShaderBackground } from "./dark-shader-background"
 
 const footerNav = [
   { href: "/", label: "Inicio" },
@@ -60,8 +61,9 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative pt-16 pb-8" style={{ background: "var(--ink)" }}>
-      <div className="container mx-auto px-4">
+    <footer className="relative pt-16 pb-8 overflow-hidden" style={{ background: "var(--ink)" }}>
+      <DarkShaderBackground scrimOpacity={0.82} />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-[1.5fr_1fr_1fr] gap-10 pb-12 border-b border-[var(--border-dark)]">
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5 mb-4">

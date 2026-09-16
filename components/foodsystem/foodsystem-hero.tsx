@@ -6,6 +6,7 @@ import { ChefHat, Play, CalendarCheck, MessageCircle, LayoutDashboard, Sparkles 
 import { MagneticButton } from "../magnetic-button"
 import { Button } from "../ui-premium/button"
 import { Badge } from "../ui-premium/badge"
+import { DarkShaderBackground } from "../dark-shader-background"
 
 const floatingBadges = [
   { icon: CalendarCheck, text: "Reservas en vivo", position: "-top-4 -left-4 md:-left-10" },
@@ -19,10 +20,7 @@ export function FoodSystemHero() {
 
   return (
     <section ref={ref} className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden" style={{ background: "var(--ink)" }}>
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full blur-[140px] opacity-[0.12] pointer-events-none"
-        style={{ background: "var(--accent)" }}
-      />
+      <DarkShaderBackground scrimOpacity={0.65} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

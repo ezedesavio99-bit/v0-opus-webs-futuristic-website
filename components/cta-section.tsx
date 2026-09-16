@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { MagneticButton } from "./magnetic-button"
 import { Button } from "./ui-premium/button"
+import { DarkShaderBackground } from "./dark-shader-background"
 
 export function CTASection() {
   const ref = useRef(null)
@@ -11,10 +12,7 @@ export function CTASection() {
 
   return (
     <section ref={ref} className="relative py-24 md:py-32 overflow-hidden" style={{ background: "var(--ink)" }}>
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full blur-[150px] opacity-[0.15]"
-        style={{ background: "var(--accent)" }}
-      />
+      <DarkShaderBackground scrimOpacity={0.6} />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div

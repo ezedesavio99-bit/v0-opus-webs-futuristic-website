@@ -21,6 +21,7 @@ import {
   Ticket,
   Network,
 } from "lucide-react"
+import { DarkShaderBackground } from "../dark-shader-background"
 
 const problems = [
   { icon: Instagram, label: "Instagram" },
@@ -50,7 +51,8 @@ export function FoodSystemProblem() {
 
   return (
     <section ref={ref} className="relative py-20 md:py-28 overflow-hidden" style={{ background: "var(--ink)" }}>
-      <div className="container mx-auto px-4">
+      <DarkShaderBackground scrimOpacity={0.72} />
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
