@@ -45,18 +45,16 @@ export function Header() {
           }`}
         >
           <Link href="/" className="flex items-center group">
-            <div
-              className={`flex items-center rounded-lg transition-colors ${light ? "bg-[var(--ink)] px-2.5 py-1.5" : ""}`}
-            >
-              <Image
-                src="/logo.png"
-                alt="OpusWebs"
-                width={4864}
-                height={1620}
-                priority
-                className="h-10 w-auto"
-              />
-            </div>
+            <Image
+              src="/logo.png"
+              alt="OpusWebs"
+              width={4864}
+              height={1620}
+              priority
+              className={`h-14 w-auto transition-[filter] duration-300 ${
+                light ? "drop-shadow-[0_1px_1px_rgba(0,0,0,0.45)] drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)]" : ""
+              }`}
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
