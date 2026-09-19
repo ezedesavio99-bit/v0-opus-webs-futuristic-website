@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "./ui-premium/button"
@@ -43,22 +44,19 @@ export function Header() {
             light ? "glass px-5 py-3 shadow-premium" : "px-2 py-3"
           }`}
         >
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-8 h-8 rounded-lg bg-[var(--ink)] flex items-center justify-center overflow-hidden">
-              <span
-                className="font-display font-bold text-base"
-                style={{ color: "var(--accent)" }}
-              >
-                O
-              </span>
-            </div>
-            <span
-              className={`font-display font-bold text-lg transition-colors ${
-                light ? "text-[var(--ink)]" : "text-white"
-              }`}
+          <Link href="/" className="flex items-center group">
+            <div
+              className={`flex items-center rounded-lg transition-colors ${light ? "bg-[var(--ink)] px-2.5 py-1.5" : ""}`}
             >
-              Opus<span style={{ color: "var(--accent)" }}>Webs</span>
-            </span>
+              <Image
+                src="/logo.png"
+                alt="OpusWebs"
+                width={2172}
+                height={724}
+                priority
+                className="h-7 w-auto"
+              />
+            </div>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
