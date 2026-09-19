@@ -68,7 +68,7 @@ export function Footer() {
         <div className="grid md:grid-cols-[1.5fr_1fr_1fr] gap-10 pb-12 border-b border-[var(--border-dark)]">
           <div>
             <Link href="/" className="inline-flex items-center mb-4">
-              <Image src="/logo.png" alt="OpusWebs" width={2172} height={724} className="h-8 w-auto" />
+              <Image src="/logo.png" alt="OpusWebs" width={4864} height={1620} className="h-11 w-auto" />
             </Link>
             <p className="text-sm text-[var(--text-on-dark-muted)] max-w-xs leading-relaxed">
               Diseño y desarrollo de sitios web, tiendas online y software a medida para negocios que quieren

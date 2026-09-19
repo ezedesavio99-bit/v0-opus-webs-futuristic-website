@@ -51,10 +51,10 @@ export function Header() {
               <Image
                 src="/logo.png"
                 alt="OpusWebs"
-                width={2172}
-                height={724}
+                width={4864}
+                height={1620}
                 priority
-                className="h-7 w-auto"
+                className="h-10 w-auto"
               />
             </div>
           </Link>
